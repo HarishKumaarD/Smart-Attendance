@@ -1,0 +1,11 @@
+def mark_attendance(self,i,r,n,d):
+        already_in_file = set()
+        with open('Attendance.csv','r+',newline="\n") as f:
+            for line in f:
+                already_in_file.add(line.split(",")[0])
+        if((i not in already_in_file) and (r not in already_in_file) and (n not in already_in_file) and (d not in already_in_file)):
+            with open('Attendance.csv','r+',newline="\n") as f:    
+                now=datetime.now()
+                d1=now.strftime("%d/%m/%Y")
+                dtString=now.strftime("%H:%M:%S")
+                f.writelines(f"\n{i},{r},{n},{d},{dtString},{d1},present")
